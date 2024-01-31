@@ -39,16 +39,11 @@ function playRound() {
    const result = roundResult(playerSelection, computerSelection);
 
    return result;
-
 }
 
 function roundResult(playerSelection, computerSelection) {
 
     let result;
-    const playerWin = 'You Won!';
-    const playerLose = 'You Lost...';
-    const tied = 'Looks Like You Tied!';
-
 
     switch (playerSelection) {
         case 'rock':
@@ -84,8 +79,43 @@ function roundResult(playerSelection, computerSelection) {
     return result;
 }
 
+
+function playGame() {
+
+    let result;
+
+    for (let i = 1; i < 6; i++) {
+        console.log(`Round ${i}`);
+        result = playRound();
+        if (result === playerWin) {
+            ++playerScore;
+        } else if (result === playerLose) {
+            ++computerScore;
+        } else if (result === tied) {
+            ++playerScore;
+            ++computerScore;
+        } else {
+            console.log('Invalid Round');
+        }
+        console.log(`Your Score: ${playerScore} Computer Score: ${computerScore}`);
+        console.log(result);
+    }
+    if (playerScore > computerScore) {
+        console.log('Player Wins!');
+    } else if (playerScore < computerScore) {
+        console.log('Computer Wins!');
+    } else {
+        console.log('It\'s a Draw!');
+    }
+}
+
 const choice = ['rock', 'paper', 'scissors'];
 let playerSelection;
-console.log(playRound());
+const playerWin = 'You Won!';
+const playerLose = 'You Lost...';
+const tied = 'Looks Like You Tied!';
+let playerScore = 0;
+let computerScore = 0;
+(playGame());
 
 

@@ -21,8 +21,8 @@ function getComputerChoice() {
 
 
 function getPlayerChoice() {
-    let userInput = prompt('Rock, Paper, Scissors', '');
-    playerSelection = userInput.toLowerCase();
+    let playerInput = prompt('Rock, Paper, Scissors', '');
+    playerSelection = playerInput.toLowerCase();
 
     return playerSelection;
 }
@@ -36,12 +36,12 @@ function playRound() {
    console.log('Player Selection:', playerSelection);
    console.log('Comp Selection:', computerSelection);
    
-   const result = roundResult(playerSelection, computerSelection);
+   const result = getResult(playerSelection, computerSelection);
 
    return result;
 }
 
-function roundResult(playerSelection, computerSelection) {
+function getResult(playerSelection, computerSelection) {
 
     let result;
 
@@ -116,6 +116,7 @@ const playerLose = 'You Lost...';
 const tied = 'Looks Like You Tied!';
 let playerScore = 0;
 let computerScore = 0;
+
 (playGame());
 
 

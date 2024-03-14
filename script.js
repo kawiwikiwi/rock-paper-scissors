@@ -8,7 +8,6 @@ function getComputerChoice() {
 }
 
 
-
 function initializeButtonEvents() {
     const buttons = document.querySelectorAll('button');
 
@@ -23,9 +22,6 @@ function initializeButtonEvents() {
       })
     })
 }
-
-
-
 
 
 function playRound() {
@@ -47,6 +43,7 @@ function playRound() {
     endGame();
   }
 }
+
 
 function getResult(playerSelection, computerSelection) {
 
@@ -84,6 +81,7 @@ function getResult(playerSelection, computerSelection) {
     return result;
 }
 
+
 function getScore(result) {
   console.log(result)
   if (result === playerWin) {
@@ -91,8 +89,8 @@ function getScore(result) {
   } else if (result === playerLose) {
     ++computerScore;
   } 
-  
 }
+
 
 function endGame() {
   const buttons = document.querySelectorAll('button');
@@ -122,6 +120,7 @@ function endGame() {
   });
 }
 
+
 function resetGame () {
   const buttons = document.querySelectorAll('button');
   buttons.forEach((button) => {
@@ -144,38 +143,8 @@ function resetGame () {
   let computer = document.querySelector('#comp');
   player.textContent = `Player: ${playerScore}`
   computer.textContent =  `Computer: ${computerScore}`
-
 }
 
-
-// function playGame() {
-
-//     let result;
-
-//     for (let i = 1; i < 6; i++) {
-//         console.log(`Round ${i}`);
-//         result = playRound();
-//         if (result === playerWin) {
-//             ++playerScore;
-//         } else if (result === playerLose) {
-//             ++computerScore;
-//         } else if (result === tied) {
-//             ++playerScore;
-//             ++computerScore;
-//         } else {
-//             console.log('Invalid Round');
-//         }
-//         console.log(`Your Score: ${playerScore} Computer Score: ${computerScore}`);
-//         console.log(result);
-//     }
-//     if (playerScore > computerScore) {
-//         console.log('Player Wins!');
-//     } else if (playerScore < computerScore) {
-//         console.log('Computer Wins!');
-//     } else {
-//         console.log('It\'s a Draw!');
-//     }
-// }
 
 const choice = ['rock', 'paper', 'scissors'];
 let playerSelection;
@@ -185,7 +154,6 @@ const tied = 'Looks Like You Tied!';
 let playerScore = 0;
 let computerScore = 0;
 let result;
-
 
 
 initializeButtonEvents();

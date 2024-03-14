@@ -29,19 +29,24 @@ function initializeButtonEvents() {
 
 
 function playRound() {
-   const computerSelection = getComputerChoice();
+  const computerSelection = getComputerChoice();
 
-   console.log('Player Selection:', playerSelection);
-   console.log('Comp Selection:', computerSelection);
-   
-   const result = getResult(playerSelection, computerSelection);
+  console.log('Player Selection:', playerSelection);
+  console.log('Comp Selection:', computerSelection);
+
+  const result = getResult(playerSelection, computerSelection);
+
+  getScore(result);
+
+  let player = document.querySelector('#player');
+  let computer = document.querySelector('#comp');
+  player.textContent = `Player: ${playerScore}`
+  computer.textContent =  `Computer: ${computerScore}`
 
    return result;
 }
 
 function getResult(playerSelection, computerSelection) {
-
-    let result;
 
     switch (playerSelection) {
         case 'rock':
@@ -75,6 +80,16 @@ function getResult(playerSelection, computerSelection) {
             result = 'Please enter either rock, paper or scissors to play!'
        }
     return result;
+}
+
+function getScore(result) {
+  console.log(result)
+  if (result === playerWin) {
+    ++playerScore;
+  } else if (result === playerLose) {
+    ++computerScore;
+  } 
+  
 }
 
 
@@ -114,6 +129,9 @@ const playerLose = 'You Lost...';
 const tied = 'Looks Like You Tied!';
 let playerScore = 0;
 let computerScore = 0;
+let result;
+
+
 
 initializeButtonEvents();
 

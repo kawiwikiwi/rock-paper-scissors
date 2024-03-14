@@ -43,7 +43,9 @@ function playRound() {
   player.textContent = `Player: ${playerScore}`
   computer.textContent =  `Computer: ${computerScore}`
 
-   return result;
+  if (playerScore === 5 || computerScore === 5) {
+    endGame();
+  }
 }
 
 function getResult(playerSelection, computerSelection) {
@@ -90,6 +92,59 @@ function getScore(result) {
     ++computerScore;
   } 
   
+}
+
+function endGame() {
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach((button) => {
+    button.disabled = true;
+  });
+
+  const div = document.querySelector('#playAgain');
+
+  const winnerText = document.createElement('span')
+  winnerText.classList.add('winnerText')
+  if (playerScore === 5) {
+    winnerText.textContent = 'Player Wins!'
+  } else if (computerScore === 5) {
+    winnerText.textContent = 'Computer Wins!'
+  }
+
+  const playAgainButton = document.createElement('button');
+  playAgainButton.textContent = 'Play Again?';
+  playAgainButton.classList.add('playAgain')
+
+  div.appendChild(winnerText);
+  div.appendChild(playAgainButton);
+
+  playAgainButton.addEventListener('click', () => {
+    resetGame();
+  });
+}
+
+function resetGame () {
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach((button) => {
+    button.disabled = false;
+  });
+
+  const div = document.querySelector('#playAgain');
+
+  const playAgainButton = document.querySelector('.playAgain');
+
+  const winnerText = document.querySelector('.winnerText');
+
+  div.removeChild(playAgainButton);
+  div.removeChild(winnerText);
+
+  playerScore = 0;
+  computerScore = 0;
+
+  let player = document.querySelector('#player');
+  let computer = document.querySelector('#comp');
+  player.textContent = `Player: ${playerScore}`
+  computer.textContent =  `Computer: ${computerScore}`
+
 }
 
 
